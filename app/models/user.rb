@@ -6,15 +6,16 @@ class User < ApplicationRecord
 
   password_regex = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
   validates_format_of :password, with: password_regex
+  name_regex = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/
+  kana_regex = /\A[ァ-ヶー－]+\z/
 
   with_options presence: true do
     validates :nickname
     validates :email, uniqueness: true
-    validates :encrypted_password
-    validates :family_name, format: {with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ }
-    validates :family_name_kana, format: {with: /\A[ァ-ヶー－]+\z/ }
-    validates :first_name, format: {with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ } 
-    validates :first_name_kana, format: {with: /\A[ァ-ヶー－]+\z/ }
+    validates :family_name, format: {with: name_regex }
+    validates :family_name_kana, format: {with: kana_regex }
+    validates :first_name, format: {with: name_regex } 
+    validates :first_name_kana, format: {with: kana_regex }
     validates :birth_day
   end
 
