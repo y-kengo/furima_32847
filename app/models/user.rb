@@ -11,9 +11,9 @@ class User < ApplicationRecord
     validates :nickname
     validates :email, uniqueness: true
     validates :encrypted_password
-    validates :family_name, format: {with: /\A[ぁ-んァ-ン一-龥ー]+\z/ }
+    validates :family_name, format: {with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ }
     validates :family_name_kana, format: {with: /\A[ァ-ヶー－]+\z/ }
-    validates :first_name, format: {with: /\A[ぁ-んァ-ン一-龥ー]+\z/ } 
+    validates :first_name, format: {with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ } 
     validates :first_name_kana, format: {with: /\A[ァ-ヶー－]+\z/ }
     validates :birth_day
   end
