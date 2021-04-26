@@ -17,7 +17,7 @@
 - has_many :products
 - has_many :orders
 
-## productsテーブル
+## itemsテーブル
 
 | Column             | Type       | Options                        |
 |--------------------|------------|--------------------------------|
