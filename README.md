@@ -14,7 +14,7 @@
 | encrypted_password | string     | null:false                    |
 
 ### Association
-- has_many :products
+- has_many :items
 - has_many :orders
 
 ## itemsテーブル
