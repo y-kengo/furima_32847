@@ -48,6 +48,12 @@ RSpec.describe OrderAddress, type: :model do
           expect(@order_address.errors.full_messages).to include("Area Select")
         end
 
+        it '都道府県が1では登録できない' do
+          @order_address.area_id = '1'
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("Area Select")
+        end
+
         it '市町村の入力がないと保存できないこと' do
           @order_address.city = ''
           @order_address.valid?
@@ -91,6 +97,6 @@ RSpec.describe OrderAddress, type: :model do
         end
       end
     end
-  end
-# end
+end
+
 
