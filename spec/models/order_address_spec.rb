@@ -25,9 +25,9 @@ RSpec.describe OrderAddress, type: :model do
 
      context '商品の購入記録が保存されない時' do
         it "tokenが空では登録できないこと" do
-          @order_address.postal_code = 'nill'
+          @order_address.token= ''
           @order_address.valid?
-          expect(@order_address.errors.full_messages).to include("Postal code  Input correctly")
+          expect(@order_address.errors.full_messages).to include("Token can't be blank")
         end
 
         it '郵便番号が空では保存できないこと' do
@@ -49,7 +49,7 @@ RSpec.describe OrderAddress, type: :model do
         end
 
         it '都道府県が1では登録できない' do
-          @order_address.area_id = '1'
+          @order_address.area_id = 1
           @order_address.valid?
           expect(@order_address.errors.full_messages).to include("Area Select")
         end
