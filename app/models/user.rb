@@ -11,13 +11,14 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :nickname
-    validates :email, uniqueness: true
+    validates :email, uniqueness: true, uniqueness: { case_sensitive: true }
     validates :family_name, format: {with: name_regex }
     validates :family_name_kana, format: {with: kana_regex }
     validates :first_name, format: {with: name_regex } 
     validates :first_name_kana, format: {with: kana_regex }
     validates :birth_day
   end
+
 
   has_many :items
 
